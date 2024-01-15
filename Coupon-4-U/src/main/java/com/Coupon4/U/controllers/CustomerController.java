@@ -40,12 +40,12 @@ public class CustomerController {
     }
 
     @GetMapping("/getCouponsByCategory/{category}")
-    public Set<Coupon> getCouponsByCategory(Category category) throws IdNotFoundException, UnauthorizedException {
+    public Set<Coupon> getCouponsByCategory(@PathVariable Category category) throws IdNotFoundException, UnauthorizedException {
         return getService().getCouponsByCategory(category);
     }
 
     @GetMapping("/getCouponsByMaxPrice/{price}")
-    public Set<Coupon> getCouponsByMaxPrice(double price) throws IdNotFoundException, UnauthorizedException {
+    public Set<Coupon> getCouponsByMaxPrice(@PathVariable double price) throws IdNotFoundException, UnauthorizedException {
         return getService().getCouponsByMaxPrice(price);
     }
 

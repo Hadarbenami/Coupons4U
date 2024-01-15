@@ -14,7 +14,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-    @ExceptionHandler({CompanyExistsException.class, CustomerExistsException.class, CouponExistsException.class})
+    @ExceptionHandler({CompanyExistsException.class, CustomerExistsException.class, CouponExistsException.class, PurchaseException.class})
     public ResponseEntity<String> handleCouponException(Exception ex){
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }

@@ -1,12 +1,11 @@
 package com.Coupon4.U.controllers;
 
+import com.Coupon4.U.exceptions.IdNotFoundException;
 import com.Coupon4.U.exceptions.UnauthorizedException;
 import com.Coupon4.U.models.Coupon;
+import com.Coupon4.U.services.CompanyService;
 import com.Coupon4.U.services.CustomerService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -15,15 +14,23 @@ import java.util.List;
 
 public class GeneralController {
 
-    private CustomerService service;
+    private CustomerService customerService;
+    private CompanyService companyService;
 
 
-    public GeneralController(CustomerService service) {
-        this.service = service;
+    public GeneralController(CustomerService customerService, CompanyService companyService) {
+        this.customerService = customerService;
+        this.companyService = companyService;
     }
 
     @GetMapping("/getAllCoupons")
     public List<Coupon> getAllCoupons() {
-        return service.getAllCoupons();
+        return customerService.getAllCoupons();
     }
+
+    @GetMapping("/getOneCoupon/{id}")
+    public Coupon getOneCoupon(@PathVariable int id) throws UnauthorizedException, IdNotFoundException {
+        return companyService.getCouponById(id);
+    }
+
 }

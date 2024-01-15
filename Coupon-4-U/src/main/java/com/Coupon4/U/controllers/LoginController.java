@@ -80,7 +80,8 @@ public class LoginController {
 
             token = JWT.create()
                     .withClaim("id", customer.getId())
-                    .withClaim("name", customer.getFirstName())
+                    .withClaim("firstName", customer.getFirstName())
+                    .withClaim("lastName", customer.getLastName())
                     .withClaim("email", customer.getEmail())
                     .withClaim("role", "customer")
                     .withIssuedAt(new Date())

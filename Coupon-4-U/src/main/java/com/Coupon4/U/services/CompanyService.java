@@ -45,6 +45,11 @@ public class CompanyService extends ClientService{
         return false;
     }
 
+
+    public Coupon getCouponById(int id) throws IdNotFoundException {
+        return couponRepository.findById(id).orElseThrow(() -> new IdNotFoundException("Coupon not found"));
+    }
+
     /**
      * This method checks if coupon already exists by title in the same company, if not added into DB.
      * Cannot add coupon with tha same title in the same company
