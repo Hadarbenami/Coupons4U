@@ -30,7 +30,7 @@ public class Test {
         try {
 
             CouponExpiredDalyJob job = context.getBean(CouponExpiredDalyJob.class);
-            //job.deleteExpiredCoupons();
+            job.deleteExpiredCoupons();
 
            //testAdmin();
             //testCompany();
