@@ -56,9 +56,10 @@ public class CompanyService extends ClientService{
      * @param coupon to add
      * @throws CouponExistsException thrown if coupon already exists
      */
-    public void addCoupon(Coupon coupon) throws CouponExistsException, IdNotFoundException {
+    public Coupon addCoupon(Coupon coupon) throws CouponExistsException, IdNotFoundException {
         if(getCompanyCoupons().stream().filter(coupon1 -> coupon1.getTitle().equals(coupon.getTitle())).toList().isEmpty()){
             couponRepository.save(coupon);
+            return coupon;
         }else {
             throw new CouponExistsException();
         }

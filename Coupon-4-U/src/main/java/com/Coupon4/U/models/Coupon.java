@@ -27,6 +27,8 @@ public class Coupon {
     private LocalDate endDate;
     private int amount;
     private double price;
+    @Lob
+    @Column(columnDefinition = "MEDIUMTEXT")
     private String image;
     @ManyToMany(mappedBy = "coupons", fetch = FetchType.EAGER)
     @JsonIgnore

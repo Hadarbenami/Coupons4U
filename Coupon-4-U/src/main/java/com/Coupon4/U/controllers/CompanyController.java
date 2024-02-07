@@ -52,9 +52,9 @@ public class CompanyController {
 
     //add
     @PostMapping("/addCoupon")
-    public ResponseEntity<String> addCoupon(@RequestBody Coupon coupon) throws CouponExistsException, IdNotFoundException, UnauthorizedException {
+    public ResponseEntity<?> addCoupon(@RequestBody Coupon coupon) throws CouponExistsException, IdNotFoundException, UnauthorizedException {
         getService().addCoupon(coupon);
-        return ResponseEntity.status(HttpStatus.CREATED).body("Coupon added successfully");
+        return ResponseEntity.status(HttpStatus.CREATED).body(coupon);
     }
 
     //update
